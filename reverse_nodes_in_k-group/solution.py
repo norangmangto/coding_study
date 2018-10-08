@@ -8,7 +8,6 @@ class Solution:
     def reverseKGroup(self, head, k):
         dummy = jump = ListNode(0)
         dummy.next = l = r = head
-        print(dummy.next)
 
         while True:
             count = 0
