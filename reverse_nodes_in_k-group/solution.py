@@ -6,6 +6,11 @@
 
 class Solution:
     def reverseKGroup(self, head, k):
+        """
+        :type head: ListNode
+        :type k: int
+        :rtype: ListNode
+        """
         dummy = jump = ListNode(0)
         dummy.next = l = r = head
 

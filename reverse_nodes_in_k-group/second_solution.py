@@ -4,24 +4,6 @@
 #         self.val = x
 #         self.next = None
 
-def reverse_k_nodes(head, k):
-    """
-    :type head: ListNode
-    :type k: int
-    :rtype: ListNode (new head)
-    """
-    prev_node = None
-    cur_node = head
-    for i in range(k):
-        next_node = cur_node.next
-        cur_node.next = prev_node
-        prev_node = cur_node
-        cur_node = next_node
-    head.next = cur_node
-
-    return prev_node
-
-
 class Solution:
     def reverseKGroup(self, head, k):
         """
@@ -29,25 +11,28 @@ class Solution:
         :type k: int
         :rtype: ListNode
         """
-        if k < 2 or head is None is None:
+        if head is None or k < 2:
             return head
 
         dummy = ListNode(0)
         dummy.next = head
-
-        prev = dummy
-        cur = prev.next
-
-        while(cur is not None):
-            # check if there is(are) next k-1 node(s)
-            tmp = cur
-            for i in range(k-1):
-                tmp = tmp.next
-                if tmp is None: return dummy.next
-
-            # there is(are) next k-1 node(s)
-            prev.next = reverse_k_nodes(cur, k)
-            prev = cur
-            cur = cur.next
-
+        pre = dummy
+        while pre is not None:
+            pre = self.reverse_next_k_nodes(pre, k)
         return dummy.next
+
+    def reverse_next_k_nodes(self, head, k):
+        n1 = head.next
+        nk = head
+        for _ in range(k):
+            nk = nk.next
+            if nk is None:
+                return None
+        nk_next = nk.next
+
+        pre, cur = head, n1
+        while cur != nk_next:
+            cur.next, cur, pre = pre, cur.next, cur
+        n1.next = nk_next
+        head.next = pre
+        return n1
