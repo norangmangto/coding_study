@@ -7,16 +7,7 @@ Given _n_ non-negative integers _a1_, _a2_, ..., _an_, where each represents a p
 
 **Note:** You may not slant the container and _n_ is at least 2.
 
-![](https://raw.githubusercontent.com/norangmangto/coding_study/master/container_with_most_water/problem.jpg)
-
-The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.
-
-**Example:**
-```
-Input: [1,8,6,2,5,4,8,3,7]
-Output: 49
-```
-![](https://raw.githubusercontent.com/norangmangto/coding_study/master/container_with_most_water/problem.jpg)
+![](https://raw.githubusercontent.com/norangmangto/coding_study/master/tests/leetcode/container_with_most_water/problem.jpg)
 
 The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.
 
