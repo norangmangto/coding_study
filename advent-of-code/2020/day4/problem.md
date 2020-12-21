@@ -49,7 +49,6 @@ According to the above rules, your improved system would report  `_2_`  valid pa
 
 Count the number of  _valid_  passports - those that have all required fields. Treat  `cid`  as optional.  _In your batch file, how many passports are valid?_
 
-Your puzzle answer was  `247`.
 
 ## --- Part Two ---
 
