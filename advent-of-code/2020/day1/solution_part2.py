@@ -1,11 +1,11 @@
 import pathlib
 
 
-def solution() -> int:
+def solution(file_path: str) -> int:
     one_number_list = []
     two_number_map = {}
 
-    with open(f'{pathlib.Path(__file__).parent}/input.txt', 'r') as f:
+    with open(file_path, 'r') as f:
         for num in f:
             num = int(num)
 
@@ -19,4 +19,4 @@ def solution() -> int:
 
 
 if __name__ == "__main__":
-    print(solution())
+    print(solution(f'{pathlib.Path(__file__).parent}/input.txt'))
