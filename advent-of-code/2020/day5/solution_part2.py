@@ -28,22 +28,21 @@ def parse_bsp(str_input: str) -> (int, int):
 
 def get_seat_id(str_input: str) -> int:
     row, column = parse_bsp(str_input)
-    print(f"row, column: {row}, {column}")
     return row * 8 + column
 
 
 def solution(file_path: str) -> int:
-    highest_seat_id = 0
+    seat_ids = []
 
     # read the file
     with open(file_path, "r") as f:
         for line in f:
-            seat_id = get_seat_id(line)
+            seat_ids.append(get_seat_id(line))
 
-            if seat_id > highest_seat_id:
-                highest_seat_id = seat_id
-
-    return highest_seat_id
+    seat_ids.sort()
+    for cur_idx in range(1, len(seat_ids)):
+        if seat_ids[cur_idx] == seat_ids[cur_idx - 1] + 2:
+            return seat_ids[cur_idx] - 1
 
 
 if __name__ == "__main__":

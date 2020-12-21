@@ -1,42 +1,49 @@
 import pathlib
 
 
-def extract_passport(lines: str) -> dict:
-    passport = {}
+def get_row_or_column(str_input: str, max_num: int, getting_low_char: str) -> int:
+    min_num = 0
 
-    fields = lines.split(" ")
-    for field in fields:
-        k, v = field.split(":")
-        passport[k] = v
+    for s in str_input:
+        mid_num = int((max_num + min_num + 1) / 2)
+        if s == getting_low_char:
+            max_num = mid_num - 1
+        else:
+            min_num = mid_num
 
-    return passport
+    return min_num
+
+
+def get_row(str_input: str) -> int:
+    return get_row_or_column(str_input, 127, "F")
+
+
+def get_column(str_input: str) -> int:
+    return get_row_or_column(str_input, 7, "L")
+
+
+def parse_bsp(str_input: str) -> (int, int):
+    return get_row(str_input[:7]), get_column(str_input[7:])
+
+
+def get_seat_id(str_input: str) -> int:
+    row, column = parse_bsp(str_input)
+    print(f"row, column: {row}, {column}")
+    return row * 8 + column
 
 
 def solution(file_path: str) -> int:
-    valid_passport_count = 0
+    highest_seat_id = 0
 
     # read the file
     with open(file_path, "r") as f:
         for line in f:
-            # read a passport
-            lines = []
-            line = line.strip()
-            while line != "":
-                lines.append(line)
-                line = f.readline().strip()
+            seat_id = get_seat_id(line)
 
-            # parse passport
-            passport = extract_passport(" ".join(lines))
+            if seat_id > highest_seat_id:
+                highest_seat_id = seat_id
 
-            # validate passport
-            mandatory_fields = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"]
-            for field in mandatory_fields:
-                if field not in passport:
-                    break
-            else:
-                valid_passport_count += 1
-
-    return valid_passport_count
+    return highest_seat_id
 
 
 if __name__ == "__main__":
