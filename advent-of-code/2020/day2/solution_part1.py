@@ -1,13 +1,13 @@
 import pathlib
 
 
-def solution() -> int:
-    with open(f'{pathlib.Path(__file__).parent}/input.txt', 'r') as f:
+def solution(file_path:str) -> int:
+    with open(file_path, 'r') as f:
         valid_password_count = 0
 
         for line in f:
             # parse the input values
-            first_part, second_part, input_string = line.split(" ")
+            first_part, second_part, input_string = line.strip().split(" ")
             min_occur, max_occur = map(int, first_part.split('-'))
             target_char = second_part[0]
 
@@ -25,4 +25,4 @@ def solution() -> int:
 
 
 if __name__ == "__main__":
-    print(solution())
+    print(solution(f'{pathlib.Path(__file__).parent}/input.txt'))
