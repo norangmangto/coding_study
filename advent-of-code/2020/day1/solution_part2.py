@@ -5,8 +5,8 @@ def solution() -> int:
     one_number_list = []
     two_number_map = {}
 
-    with open(f'{pathlib.Path(__file__).parent}/input.txt', 'r') as input:
-        for num in input:
+    with open(f'{pathlib.Path(__file__).parent}/input.txt', 'r') as f:
+        for num in f:
             num = int(num)
 
             if num in two_number_map:

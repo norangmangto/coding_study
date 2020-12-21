@@ -4,8 +4,8 @@ import pathlib
 def solution() -> int:
     num_map = {}
 
-    with open(f'{pathlib.Path(__file__).parent}/input.txt', 'r') as input:
-        for num in input:
+    with open(f'{pathlib.Path(__file__).parent}/input.txt', 'r') as f:
+        for num in f:
             num = int(num)
 
             if num in num_map:
